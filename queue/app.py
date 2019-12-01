@@ -50,7 +50,7 @@ while True:
         print(result)
 
     elif opt == 'video':
-         cap = cv2.VideoCapture('C:\\Users\\harsha\\Desktop\\videoplayback.mp4')
+         cap = cv2.VideoCapture('/home/darkhan/video.mp4')
          width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
          height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
@@ -68,7 +68,10 @@ while True:
                      print ("frame count : {}".format(count))
                      frame = np.asarray(frame)
                      results = tfnet.return_predict(frame)
+
                      new_frame = boxing(frame, results)
+
+                    # Display the resulting frame
                      out.write(new_frame)
                      cv2.imshow('frame',new_frame)
                      if cv2.waitKey(1) & 0xFF == ord('q'):

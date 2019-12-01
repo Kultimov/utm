@@ -110,4 +110,3 @@ def get_vehical_boxes(result):
               boxes.append(tup)
 
         return boxes
-

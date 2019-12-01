@@ -21,9 +21,10 @@ def get_state(detectorIDs):
     state = state.reshape((1, state.shape[0]))
     return state
 
+
 def get_state_edge_density():
     state = []
-    edge_list=["143553082#0","143551389#0","348320661#1","-143553082#0","-143551389#0","-348320661#1"]
+    edge_list = ["143553082#0", "143551389#0", "348320661#1", "-143553082#0", "-143551389#0", "-348320661#1"]
     for e in edge_list:
         veh_num = traci.edge.getLastStepVehicleNumber(e)
         state.append(veh_num)
@@ -35,13 +36,12 @@ def calc_reward(state, next_state):
     lstate = list(state)[0]
     lnext_state = list(next_state)[0]
     for ind, (det_old, det_new) in enumerate(zip(lstate, lnext_state)):
-        if ind < len(lstate)/2:
-            rew += 1000*(det_new - det_old)
+        if ind < len(lstate) / 2:
+            rew += 1000 * (det_new - det_old)
         else:
-            rew += 1000*(det_old - det_new)
+            rew += 1000 * (det_old - det_new)
 
     return rew
-
 
 
 def main():
@@ -50,7 +50,7 @@ def main():
     TLIds = traci.trafficlights.getIDList()
     actionsMap = makemap(TLIds)
     detectorIDs = traci.inductionloop.getIDList()
-    state_space_size = traci.inductionloop.getIDCount()*2
+    state_space_size = traci.inductionloop.getIDCount() * 2
     action_space_size = len(actionsMap)
     agent = Learner(state_space_size, action_space_size, 1.0)
     epochs = 10
@@ -76,6 +76,7 @@ def main():
             state = next_state
             state1 = next_state1
             print(state1)
+
 
 if __name__ == '__main__':
     main()

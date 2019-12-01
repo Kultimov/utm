@@ -1,3 +1,7 @@
 gtfspy
 flask
 flask-runner
+keras
+tensorflow
+numpy
+h5py

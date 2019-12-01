@@ -471,7 +471,7 @@ class MapCtrl {
         var color, radius;
         const lat = stop['lat'];
         const lon = stop['lon'];
-        const count = stop['count'];
+        const count = 2;
         let name = stop['name'];
 
         if (this.$rootScope.appdata.color_and_size_stops_by_count) {
@@ -480,7 +480,7 @@ class MapCtrl {
           }
           color = cmap.get_color(count);
           name = name + " (" + count + ")";
-          radius = Math.sqrt(count/count_max)*15;
+          radius = 3;
         } else {
           color = "red";
           radius = 3;
@@ -495,7 +495,6 @@ class MapCtrl {
             title: ""
           }
         ).setRadius(radius).bindTooltip(name);
-
         markers.push(circle);
       }
       this.stoplayer = L.layerGroup(markers);

@@ -1,0 +1,2 @@
+stop_id,stop_name,stop_lat,stop_lon,zone_id
+1,VDNH,55.83100000,37.6297999,A

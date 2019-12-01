@@ -1,0 +1,2 @@
+service_id,date,exception_type
+Moscow,20161225,1
